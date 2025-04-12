@@ -1,19 +1,14 @@
+import Link from "next/link";
+import {ROUTES} from "@/lib/routes";
 
-import {getNews} from "@/lib/gnews";
-import { Post } from "@/lib/constants";
 
 export default async function Home() {
 
-  const posts = await getNews();
-
   return (
-    <ul>
-      {posts.articles.map((post: Post) => (
-          <li key={post.title}>
-              {post.title}
-          </li>
-      ))}
-    </ul>
+    <>
+    Bem-vindo. <Link href={ROUTES.JORNAL}> Acesse</Link>
+    </>
+    
   );
 }
 
