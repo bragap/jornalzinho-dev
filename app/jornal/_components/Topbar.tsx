@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
 
-interface SidebarProps{
+interface TopbarProps{
     setTopic: (topic: string) => void;
 }
 
-export default function Sidebar ({setTopic}: SidebarProps) {
+export default function Topbar ({setTopic}: TopbarProps) {
     
     return(
         <>
