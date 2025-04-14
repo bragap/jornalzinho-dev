@@ -1,15 +1,16 @@
-import '@/envConfig'
 import { NewsResponse } from './constants';
 
 async function fetchFromGNews(endpoint: string, params: Record<string, string>): Promise<NewsResponse>{
 
-    const baseUrl = process.env.GNEWS_URL ?? '';
-    const apiKey = process.env.API_KEY ?? '';
+    const baseUrl = process.env.NEXT_PUBLIC_GNEWS_URL ?? '';
+    const apiKey = process.env.NEXT_PUBLIC_API_KEY ?? '';
 
     const query = new URLSearchParams({...params, apikey: apiKey});
     const url = `${baseUrl}${endpoint}?${query.toString()}`;
 
-    const response = await fetch(url);
+    const response = await fetch(url, {
+        cache: 'force-cache'
+    });
 
     if(!response.ok) throw new Error(`Erro ao buscar dados da Gnews: ${response.statusText}`);
 
